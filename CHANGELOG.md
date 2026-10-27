@@ -1,5 +1,29 @@
 # Changelog
 
+## 1.0.0
+
+### 改成疊在 aigo-builder 上的引導層：拿掉所有限制，改成引導與協作
+
+前提改了：非技術客戶需要的是**更多引導與說明，不是更多限制**。真正高危險的操作 aigo-builder 本來就會停下來確認。
+
+- **拿掉**紅線表、「永遠不做」清單、「交給工程師」的硬規定，以及「專案 AGENTS.md ＞ 本 skill ＞ builder」的優先序。
+  客戶能做的事和工程師一樣：開 app、接外部服務、邀請同事、匯入資料、發布
+- **做法全部照 builder**：需求怎麼問（四問一輪問完）、計畫怎麼確認、資料操作線、成員管理、外部服務、更新失敗、平台問題回報；
+  本 skill 不另定流程
+- 新增 `references/builder-guide.md`：builder 每個環節的白話問法與確認範本（需求四問、計畫摘要、不可逆選擇、寫入閘門、成員、外部服務、發布、平台回報）
+- `references/issue-format.md` → `references/engineer-collab.md`：工程師是隊友不是關卡；何時值得找（建議）、兩種管道
+  （這支 app → 專案 issue／PR；平台本身 → builder `report_issue.py`）、請協助／知會／請審閱／交接範本、研究模式；
+  建標籤改用 `--force`（Windows／macOS 都能跑）
+- 情境對照新增：查資料／匯出、邀請同事／調權限、做一支新系統、接外部系統，各自對到 builder 的哪條線
+- 操作驗收保留：每個功能 E2E 或介面操作驗收；正式網址驗收可以用測試資料
+- `references/setup.md`：補 Python、uv；**每個租戶一個工作區**（`~/aigo-projects/<租戶代號>/`，builder `setup-workspace`），
+  專案放在工作區裡、匯出資料放工作區 `exports/`；平台登入支援瀏覽器登入（builder `login --browser`）與帳密檔兩種
+- Phase 0 補「拿專案最新版」（`git pull --ff-only`）；更新指令改成完整路徑
+- `references/migration.md`：拿掉工程師複核與「整批匯入交給工程師」，匯入照 builder §2.5 與寫入閘門；研究原系統改成「要按會改東西的按鈕先問客戶」
+- `references/project-setup.md`：「客戶協作」一節改成工程師、正式網址、希望先知會的事、測試資料，沒有紅線
+- 開口指南：PART B 改成「一起合作」（跟工程師一起合作、上線前後、保護資料）；情境卡 12 張（新增查資料或匯出、邀請同事與調權限）；
+  安裝那段話補工具與租戶工作區；搬遷提示詞第 3 段改成先匯 1 筆給客戶看；`client.json` 新增 `tenant_code`、`examples.data`、`examples.member`
+
 ## 0.3.0
 
 ### 原系統搬遷任務、每個功能都要實際操作驗收
