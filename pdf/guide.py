@@ -93,10 +93,12 @@ d.slide(P0, "這份指南怎麼用", "AI 已經學過怎麼跟你合作，你只
           + N("<b>每段話都用「用協作開發模式。」開頭</b>：AI 會切換成白話、先問清楚再做的工作方式。")
           + N("不確定怎麼講也沒關係，直接說「我不知道從哪開始」，AI 會列出選項給你選。"))))
 
+# 貼這段時協作 skill 還沒裝，AI 只看得到這段字：指令要寫明（-y 免互動、-a 只裝 Claude Code 與 Codex）
 install = ("請幫我完成 AI GO 協作開發的安裝，每一步用白話告訴我在做什麼，需要我動手的地方講清楚：<br>"
-           f"1. 用 npx skills 安裝這兩個 skill（使用者層級）：<br>{SKILLS[0]}<br>{SKILLS[1]}<br>"
-           "2. 確認 GitHub 已經登入，沒有就帶我登入<br>"
-           f"3. 把這些專案下載到我的電腦：<br>{repo_urls}")
+           "1. 安裝兩個 skill，各執行一次 npx skills add 網址 -g -y -a claude-code codex（沒有 Node.js 就先幫我裝）：<br>"
+           f"{SKILLS[0]}<br>{SKILLS[1]}<br>"
+           "2. 用 gh auth status 確認 GitHub 已登入；沒有 gh 就先裝，沒登入就用 gh auth login --web 帶我登入<br>"
+           f"3. 用 gh repo clone 把這些專案下載到我家目錄的 aigo-projects 資料夾：<br>{repo_urls}")
 d.slide(P0, "第一次使用：安裝", "只要做一次。打開 Claude Code 或 Codex，開一個新對話，貼上這段。", d.row(
     d.col(prompt(install, label="第一次使用，複製這段貼給 AI", cls="big")
           + N("過程中瀏覽器會打開 GitHub 請你授權：<b>密碼只在瀏覽器的登入頁輸入，不要打在對話框裡。</b>", "warn"), 820),

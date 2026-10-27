@@ -5,11 +5,12 @@
 ## 1. 安裝兩個 skill
 
 ```bash
-npx skills add AI-GO-APP/aigo-app-builder-skill -g -y
-npx skills add AI-GO-APP/aigo-client-collab-skill -g -y
+npx skills add AI-GO-APP/aigo-app-builder-skill -g -y -a claude-code codex
+npx skills add AI-GO-APP/aigo-client-collab-skill -g -y -a claude-code codex
 ```
 
-- `-g` 裝在使用者層級，之後每個專案都能用；skills CLI 會自動偵測電腦上的 Claude Code、Codex 並裝到對的位置。
+- `-g` 裝在使用者層級，之後每個專案都能用；`-y` 免互動；`-a claude-code codex` 只裝這兩個（實體在 `~/.agents/skills/`，Claude Code 用連結指過去）。
+  連結建立失敗（Windows 權限）時改加 `--copy` 重跑。
 - 沒有 `npx`（沒裝 Node.js）→ 跟客戶說「要先裝一個工具（Node.js）」，依作業系統帶他安裝：
   Windows `winget install OpenJS.NodeJS.LTS`、macOS `brew install node`（沒有 brew 就帶他到 https://nodejs.org 下載 LTS 版）。
   裝完要重開終端機或 AI 工具，再重跑上面兩行。

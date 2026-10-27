@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.1
+
+### 安裝指令寫明 agent 與免互動
+
+- 安裝改為 `npx skills add <repo> -g -y -a claude-code codex`：只裝 Claude Code 與 Codex，不再對其他不支援的 agent 報錯（`references/setup.md`、README）
+- 開口指南的安裝那段話直接寫出指令：貼這段時協作 skill 還沒裝，AI 只看得到這段字；GitHub 登入與下載專案也寫明用 `gh`
+
 ## 0.1.0
 
 ### 第一版
