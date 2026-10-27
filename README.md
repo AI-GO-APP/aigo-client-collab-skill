@@ -60,6 +60,7 @@ python scripts/install_hooks.py --check      # 看 hook 裝了沒（exit 0＝都
 | `references/metaphors.md` | 固定比喻（技術詞 → 白話） |
 | `references/issue-format.md` | 「需要技術支援」「研究任務」兩種 issue 格式、研究模式流程與結果格式 |
 | `references/setup.md` | 第一次使用：安裝、GitHub 登入、下載專案 |
+| `references/migration.md` | 原系統搬遷任務（Chrome 擴充套件研究原系統 → 資料 → 規格 → 衝突 → 分批實作驗收 → 切換） |
 | `references/project-setup.md` | 給技術端：專案開放客戶協作的設定與檢查 |
 | `pdf/` | 開口指南 PDF 範本（`guide.py`）與客戶資料範例 |
 | `scripts/check_update.py` | 自我更新 |
