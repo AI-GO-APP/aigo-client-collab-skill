@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.2.0
+
+### 每次開新對話自動檢查更新（SessionStart hook）
+
+原本只在 skill 觸發時（Phase -1）檢查更新；客戶不會自己改 AI 工具的設定，所以照 aigo-builder README「保持更新」推薦的 hook 做成腳本，由 AI 代裝。
+
+- 新增 `scripts/install_hooks.py`：一次幫 Claude Code（`~/.claude/settings.json`）與 Codex（`~/.codex/config.toml`）裝好
+  aigo-client-collab 與 aigo-builder 兩個 skill 的 SessionStart hook；只追加、先備份成 `.bak-aigo`、重複執行不重複加、`--check` 只檢查
+- `resources/hooks/`：手動設定範本（照 aigo-builder）
+- `SKILL.md` Phase 0 多一項「自動更新 hook 有裝」；`references/setup.md` 新增 §5
+- 開口指南的安裝那段話多一步：執行 `install_hooks.py`（已發出的 PDF 不必重發：Phase 0 會補裝）
+- README「保持更新」改寫成和 aigo-builder 對齊的完整說明
+
 ## 0.1.2
 
 ### 開口指南：情境卡數量

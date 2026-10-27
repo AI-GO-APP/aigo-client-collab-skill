@@ -23,6 +23,7 @@ description: >
 python scripts/check_update.py     # macOS / Linux 用 python3；路徑相對本 skill 目錄
 ```
 
+已裝 SessionStart hook（`scripts/install_hooks.py`，Phase 0 會檢查）的話，開新對話時已經檢查過，這裡多半被節流跳過。
 無輸出＝沒事，直接往下。輸出「已同步」→ 重新讀本檔再繼續，並用一句白話告訴客戶「協作說明更新了」。
 輸出「失敗」→ 照腳本印的手動指令處理，處理不了就跟客戶說「更新沒成功，先用舊版繼續」，不要卡住對話。
 規則與 aigo-builder 相同：不跳過、不替使用者決定要不要更新。
@@ -34,6 +35,7 @@ python scripts/check_update.py     # macOS / Linux 用 python3；路徑相對本
 | 檢查 | 怎麼查 | 缺了怎麼辦 |
 |---|---|---|
 | aigo-builder skill 有裝 | 可用 skill 清單裡有 `aigo-builder` | 照 `references/setup.md` §1 安裝 |
+| 自動更新 hook 有裝 | `python scripts/install_hooks.py --check`（exit 0＝都裝好） | 照 `references/setup.md` §5；先用一句話跟客戶說要設定自動檢查更新 |
 | GitHub 已登入 | `gh auth status` | `references/setup.md` §2（帶客戶走瀏覽器登入，**你不輸入密碼**） |
 | 在專案資料夾裡 | 目前目錄是 git repo，且有 `AGENTS.md` | 問客戶要做哪一支 app，照 `references/setup.md` §3 下載或切換 |
 | 讀過專案規則 | 讀 `AGENTS.md`，找「客戶協作」一節（技術窗口、紅線增減、正式網址） | 沒有那一節就用本檔的預設紅線，並在第一次開 issue 時順便提醒工程師補 |
@@ -169,4 +171,6 @@ python scripts/check_update.py     # macOS / Linux 用 python3；路徑相對本
 | `references/setup.md` | 第一次使用：安裝、GitHub 登入、下載專案 |
 | `references/project-setup.md` | 給技術端：專案 `AGENTS.md` 的「客戶協作」一節怎麼寫 |
 | `pdf/` | 給客戶的「開口指南」PDF 範本與產生方式（客戶版離線保存，不進版控） |
-| `scripts/check_update.py` | 自我更新 |
+| `scripts/check_update.py` | 自我更新（比對 `VERSION`，遠端較新就強制同步本機所有安裝） |
+| `scripts/install_hooks.py` | 幫 Claude Code、Codex 裝兩個 skill 的 SessionStart 自動更新 hook |
+| `resources/hooks/` | hook 的手動設定範本 |

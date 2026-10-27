@@ -23,8 +23,27 @@ npx skills add AI-GO-APP/aigo-client-collab-skill -g -y -a claude-code codex
 
 ## 保持更新
 
-每次觸發時 `scripts/check_update.py` 比對本地與 GitHub 上的 `VERSION`，遠端較新就強制同步本機所有安裝
-（機制同 aigo-builder）。**改 skill 內容請對本 repo 開 PR**，安裝目錄裡的修改會被覆蓋。
+機制與 [aigo-builder](https://github.com/AI-GO-APP/aigo-app-builder-skill) 相同（`scripts/check_update.py` 照抄，只換 repo 與狀態檔名）：
+
+- **版本**：`VERSION` 加上 `CHANGELOG.md`。比對本地與 GitHub 上的 `VERSION`，**遠端較新時直接把本機所有已註冊安裝強制同步到遠端 main**，
+  不詢問、不保留本地修改。git 安裝用 `fetch`＋`reset --hard`，`npx skills add` 的複製式安裝下載 `main.zip` 鏡像覆蓋。
+- **節流**：遠端版本抓一次快取 3 小時（狀態檔 `~/.aigo/collab_update_check.json`，和 aigo-builder 的分開），版本比對每次都做；
+  離線或逾時一律靜默略過。開發用副本（本地版本高於遠端、或 git 不在 main／master）不碰。
+- **什麼時候檢查**：
+  1. **每次開新對話**（SessionStart hook，建議）：`scripts/install_hooks.py` 一次幫 Claude Code 與 Codex 裝好
+     aigo-client-collab 和 aigo-builder 兩個 skill 的 hook，在 skill 載入前就同步完。客戶第一次安裝時由 AI 執行（`references/setup.md` §5）。
+     手動設定的範本在 `resources/hooks/`。Codex 會請使用者核准新的 hook。
+  2. **每次 skill 觸發**（`SKILL.md` Phase -1）：沒裝 hook 的 agent 也會更新；同步後 AI 重新讀取 `SKILL.md` 並告知客戶。
+
+```bash
+python scripts/check_update.py               # 檢查並同步（macOS/Linux 用 python3）；沒動作就沒輸出
+python scripts/check_update.py --force       # 忽略節流
+python scripts/check_update.py --check-only  # 只報告不同步（維護者／CI 用）
+python scripts/install_hooks.py --check      # 看 hook 裝了沒（exit 0＝都裝好）
+```
+
+> 維護者注意：**改 skill 內容走 PR，合併前同步 bump `VERSION` 並在 `CHANGELOG.md` 補一節**，否則客戶端不會收到更新。
+> 安裝目錄裡的修改會被覆蓋。
 
 ## 給技術端
 

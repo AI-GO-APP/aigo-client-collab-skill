@@ -98,7 +98,8 @@ install = ("請幫我完成 AI GO 協作開發的安裝，每一步用白話告�
            "1. 安裝兩個 skill，各執行一次 npx skills add 網址 -g -y -a claude-code codex（沒有 Node.js 就先幫我裝）：<br>"
            f"{SKILLS[0]}<br>{SKILLS[1]}<br>"
            "2. 用 gh auth status 確認 GitHub 已登入；沒有 gh 就先裝，沒登入就用 gh auth login --web 帶我登入<br>"
-           f"3. 用 gh repo clone 把這些專案下載到我家目錄的 aigo-projects 資料夾：<br>{repo_urls}")
+           f"3. 用 gh repo clone 把這些專案下載到我家目錄的 aigo-projects 資料夾：<br>{repo_urls}<br>"
+           "4. 執行 aigo-client-collab 的 scripts/install_hooks.py，設定每次開新對話自動檢查更新")
 d.slide(P0, "第一次使用：安裝", "只要做一次。打開 Claude Code 或 Codex，開一個新對話，貼上這段。", d.row(
     d.col(prompt(install, label="第一次使用，複製這段貼給 AI", cls="big")
           + N("過程中瀏覽器會打開 GitHub 請你授權：<b>密碼只在瀏覽器的登入頁輸入，不要打在對話框裡。</b>", "warn"), 820),

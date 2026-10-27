@@ -47,6 +47,19 @@ gh repo clone <組織/repo> "<客戶指定的位置>/<repo>"
 等到第一次要看草稿或發布時才做，照 aigo-builder 的登入流程（Phase 1）。帳密只放專案的 `.aigo/`，
 不寫進程式、不貼進對話以外的地方。
 
-## 5. 完成
+## 5. 自動更新（每次開新對話先檢查）
+
+```bash
+python <aigo-client-collab 的目錄>/scripts/install_hooks.py      # macOS / Linux 用 python3
+```
+
+- 一次幫 Claude Code（`~/.claude/settings.json`）與 Codex（`~/.codex/config.toml`）裝好兩個 skill
+  （aigo-client-collab、aigo-builder）的 SessionStart hook：每次開新對話先比對 GitHub 上的版本，有新版就同步。
+  只追加、會先備份成 `.bak-aigo`，重複執行不會重複加。
+- 跟客戶說：「我幫你設定好了，之後每次開新對話會自動檢查有沒有新版。」
+- 用 Codex 的話，Codex 下次啟動會請客戶核准這個 hook：跟客戶說「看到要不要信任新設定的提示，選允許」。
+- 輸出 `error`（設定檔格式壞了）→ 不要手動硬改，跟客戶說「AI 工具的設定檔有問題，我先不動它」，照「交給工程師」開 issue。
+
+## 6. 完成
 
 回報三件事：裝好了什麼、專案資料夾在哪、接下來可以怎麼開口（「直接說你想改什麼，或說『我不知道從哪開始』」）。
