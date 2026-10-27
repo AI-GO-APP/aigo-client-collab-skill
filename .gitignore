@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.aigo/
+.env
+# 客戶資料與產出的開口指南不進版控
+client.json
+*.html
+*.pdf
+preview/
