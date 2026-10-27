@@ -28,11 +28,12 @@ node "<present skill 路徑>/scripts/render.mjs" --html "AI GO <客戶> 協作�
 | 欄位 | 說明 |
 |---|---|
 | `tenant` | 客戶名稱（封面、頁尾、檔名） |
+| `tenant_code` | AI GO 網址開頭（`https://<tenant_code>.ai-go.app`），安裝時建工作區用 |
 | `version`、`made` | 版本與製作日（檔名與封面）；改版時版本加一號 |
 | `audience` | 封面的「對象」 |
-| `tech_contact` | 工程師名稱與 GitHub 帳號（「交給工程師」那頁） |
+| `tech_contact` | 工程師名稱與 GitHub 帳號（「跟工程師一起合作」那頁） |
 | `projects` | 這位客戶可以改的系統：名稱、內容、repo（安裝那段話會自動帶入下載網址） |
-| `examples` | 選填：用客戶業務寫的例句（`feature` 加功能、`screen` 改畫面、`broken` 壞了、`explain` 想了解），沒有就不顯示；`migration` 是 PART C 搬遷任務舉例的原系統名稱，沒有就用「104 人資後台」 |
+| `examples` | 選填：用客戶業務寫的例句（`feature` 加功能、`screen` 改畫面、`broken` 壞了、`explain` 想了解、`data` 查資料或匯出、`member` 邀請同事或調權限），沒有就不顯示；`migration` 是 PART C 搬遷任務舉例的原系統名稱，沒有就用「104 人資後台」 |
 | `contact` | 封底的聯絡方式 |
 
 ## 交付與改版

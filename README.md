@@ -2,13 +2,15 @@
 
 讓**不會寫程式的客戶**用 AI Coding（Claude Code、Codex）跟技術端一起開發 AI GO app：
 
-- 全程白話加固定比喻，一次問一題，先複述再動手
-- 把功能問清楚後直接實作、給客戶看、客戶同意後發布並驗證
-- 碰到技術紅線（權限、既有資料表、大量正式資料、算錢規則、外部串接、平台設定…）就整理成 issue 交給工程師
-- 客戶貼上工程師開的 issue 網址，就進入研究模式，研究結果經客戶確認後回貼到 issue
+- **疊在 [aigo-builder](https://github.com/AI-GO-APP/aigo-app-builder-skill) 上的引導層**：做法、技術判斷、危險操作前的提醒全部照 builder；
+  本 skill 不另定流程、不加任何禁止事項。客戶能做的事和工程師一樣（開 app、加功能、接外部服務、邀請同事、匯入資料、發布）
+- **白話引導**：builder 的每個問題、每個確認都翻成白話與固定比喻，讓客戶看得懂、做得了決定
+- **操作驗收**：每個做完的功能都實際操作一次（E2E 或介面操作），發布後在正式網址再驗一次
+- **跟工程師協作**：何時值得找、請協助／知會／請審閱／交接的範本；平台問題照 builder 回報給 AI GO 開發團隊
+- **研究模式**：客戶貼上工程師發來的研究任務網址，研究結果經客戶確認後回貼到 issue
+- **原系統搬遷研究**：用 Chrome 擴充套件研究客戶已登入的舊系統，接 builder 的遷入流程
 
-技術操作（同步、編譯、發布、資料表、權限）交給 [aigo-builder](https://github.com/AI-GO-APP/aigo-app-builder-skill)；
-專案自己的規則寫在各 repo 的 `AGENTS.md`（優先於本 skill）。
+專案自己的做法寫在各 repo 的 `AGENTS.md`。
 
 ## 安裝
 
@@ -47,20 +49,21 @@ python scripts/install_hooks.py --check      # 看 hook 裝了沒（exit 0＝都
 
 ## 給技術端
 
-1. 在專案的 `AGENTS.md` 加「客戶協作」一節：技術窗口、能不能自己發布、正式網址、紅線增減（範本：`references/project-setup.md`）。
+1. 在專案的 `AGENTS.md` 加「客戶協作」一節：工程師帳號、正式網址、希望先知會的事、測試資料（範本：`references/project-setup.md`）。
 2. 把客戶的 GitHub 帳號加進 repo，確認他的 AI GO 帳號有對應權限。
 3. 產生這位客戶的「開口指南」PDF 交給他（`pdf/README.md`）。**客戶資料與 PDF 離線保存，不進任何 repo。**
-4. 要請客戶研究或回答問題時，照 `references/issue-format.md` 的「研究任務」格式開 issue，把網址傳給客戶。
+4. 要請客戶研究或回答問題時，照 `references/engineer-collab.md` §5 的「研究任務」格式開 issue，把網址傳給客戶。
 
 ## 檔案
 
 | 檔案 | 內容 |
 |---|---|
-| `SKILL.md` | 說話規則、情境分流、功能／修問題／解釋／研究／接續流程、紅線、開 issue |
+| `SKILL.md` | 定位、開場準備、情境對照（對到 builder 的哪條線）、白話引導、操作驗收、修問題／解釋／接續、跟工程師協作 |
+| `references/builder-guide.md` | builder 每個環節的白話問法與確認範本（需求四問、計畫摘要、不可逆選擇、寫入、成員、外部服務、發布、平台回報） |
 | `references/metaphors.md` | 固定比喻（技術詞 → 白話） |
-| `references/issue-format.md` | 「需要技術支援」「研究任務」兩種 issue 格式、研究模式流程與結果格式 |
-| `references/setup.md` | 第一次使用：安裝、GitHub 登入、下載專案 |
-| `references/migration.md` | 原系統搬遷任務（Chrome 擴充套件研究原系統 → 資料 → 規格 → 衝突 → 分批實作驗收 → 切換） |
+| `references/engineer-collab.md` | 跟工程師協作：何時找、兩種管道、請協助／知會／請審閱／交接範本、研究模式 |
+| `references/setup.md` | 第一次使用：工具與 skill、GitHub 登入、租戶工作區、下載專案、平台登入（瀏覽器／帳密檔）、自動更新 |
+| `references/migration.md` | 原系統搬遷研究（Chrome 擴充套件研究原系統 → 資料 → 規格 → 衝突 → 分批實作驗收 → 切換），技術做法接 builder 遷入線 |
 | `references/project-setup.md` | 給技術端：專案開放客戶協作的設定與檢查 |
 | `pdf/` | 開口指南 PDF 範本（`guide.py`）與客戶資料範例 |
 | `scripts/check_update.py` | 自我更新 |

@@ -1,19 +1,31 @@
 {
   "tenant": "展示公司",
+  "tenant_code": "demo",
   "version": "v1",
   "made": "2026-10-27",
   "audience": "一起開發系統的同仁",
   "present_skill": "C:/path/to/ai-go-app-present-skill",
-  "tech_contact": { "name": "AI GO 工程師", "github": "your-github-handle" },
+  "tech_contact": {
+    "name": "AI GO 工程師",
+    "github": "your-github-handle"
+  },
   "projects": [
-    { "name": "訂單管理", "desc": "接單、出貨、對帳", "repo": "AI-GO-APP/fde-demo-orders" }
+    {
+      "name": "訂單管理",
+      "desc": "接單、出貨、對帳",
+      "repo": "AI-GO-APP/fde-demo-orders"
+    }
   ],
   "examples": {
     "feature": "我想在「訂單明細」加上「預計出貨日」，因為客人常打來問。",
     "screen": "「訂單列表」的金額欄我希望放在客戶名稱旁邊。",
     "broken": "「出貨」頁按「列印出貨單」沒反應，以為會跳出 PDF。",
     "explain": "「業績報表」的本月業績是用下單日還是出貨日算的？",
-    "migration": "現在用的雲端進銷存後台"
+    "migration": "現在用的雲端進銷存後台",
+    "data": "幫我匯出上個月的出貨紀錄成 Excel，我要對帳。",
+    "member": "新業務小陳下週報到，幫我邀請他，只能看自己的訂單。"
   },
-  "contact": ["技術窗口：AI GO 工程師（GitHub @your-github-handle）"]
+  "contact": [
+    "技術窗口：AI GO 工程師（GitHub @your-github-handle）"
+  ]
 }
