@@ -32,7 +32,7 @@ node "<present skill 路徑>/scripts/render.mjs" --html "AI GO <客戶> 協作�
 | `audience` | 封面的「對象」 |
 | `tech_contact` | 工程師名稱與 GitHub 帳號（「交給工程師」那頁） |
 | `projects` | 這位客戶可以改的系統：名稱、內容、repo（安裝那段話會自動帶入下載網址） |
-| `examples` | 選填：用客戶業務寫的例句（加功能、改畫面、壞了、想了解），沒有就不顯示 |
+| `examples` | 選填：用客戶業務寫的例句（`feature` 加功能、`screen` 改畫面、`broken` 壞了、`explain` 想了解），沒有就不顯示；`migration` 是 PART C 搬遷任務舉例的原系統名稱，沒有就用「104 人資後台」 |
 | `contact` | 封底的聯絡方式 |
 
 ## 交付與改版
