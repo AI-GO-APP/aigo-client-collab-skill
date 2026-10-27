@@ -15,8 +15,8 @@
 客戶端兩個 skill 都要裝（[skills CLI](https://github.com/vercel-labs/skills) 會自動裝到 Claude Code、Codex 等 agent）：
 
 ```bash
-npx skills add AI-GO-APP/aigo-app-builder-skill -g -y
-npx skills add AI-GO-APP/aigo-client-collab-skill -g -y
+npx skills add AI-GO-APP/aigo-app-builder-skill -g -y -a claude-code codex
+npx skills add AI-GO-APP/aigo-client-collab-skill -g -y -a claude-code codex
 ```
 
 客戶通常不自己打指令，而是照「開口指南」PDF 把安裝那段話貼給 AI，由 AI 安裝、帶他登入 GitHub、下載專案（`references/setup.md`）。
